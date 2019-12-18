@@ -10,6 +10,7 @@ public class TestJpa {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("pu_essai");
 		EntityManager em = entityManagerFactory.createEntityManager();
 		em.close();
+		entityManagerFactory.close();
 	}
 
 }
