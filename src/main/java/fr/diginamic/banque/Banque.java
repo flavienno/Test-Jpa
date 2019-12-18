@@ -1,31 +1,44 @@
-package defaut;
+/**
+ * 
+ */
+package fr.diginamic.banque;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "client")
+/**
+ * @author fla
+ *
+ */
 
-public class Client {
+@Entity
+@Table(name = "banque")
+public class Banque {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
-	private int id;
-	@Column(name = "nom")
+	@Column(name = "ID_banque")
+	private Integer id;
+
+	@Column(name = "NOM", length = 30, nullable = false, unique = true)
 	private String nom;
-	@Column(name = "PRENOM")
-	private String prenom;
+
+	@OneToMany(mappedBy = "banque")
+	private Set<Client> clients;
 
 	/**
 	 * 
 	 */
-	public Client() {
-		super();
+	public Banque() {
+		clients = new HashSet<Client>();
 	}
 
 	/**
@@ -33,7 +46,7 @@ public class Client {
 	 * 
 	 * @return the id
 	 */
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -43,7 +56,7 @@ public class Client {
 	 * @param id
 	 *            the id to set
 	 */
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -66,25 +79,6 @@ public class Client {
 		this.nom = nom;
 	}
 
-	/**
-	 * Getter
-	 * 
-	 * @return the prenom
-	 */
-	public String getPrenom() {
-		return prenom;
-	}
-
-	/**
-	 * Setter
-	 * 
-	 * @param prenom
-	 *            the prenom to set
-	 */
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -92,7 +86,7 @@ public class Client {
 	 */
 	@Override
 	public String toString() {
-		return "Client [id=" + id + ", nom=" + nom + ", prenom=" + prenom + "]";
+		return "Banque [id=" + id + ", nom=" + nom + "]";
 	}
 
 }

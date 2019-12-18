@@ -1,4 +1,4 @@
-package defaut;
+package fr.diginamic.entites;
 
 import java.util.Set;
 

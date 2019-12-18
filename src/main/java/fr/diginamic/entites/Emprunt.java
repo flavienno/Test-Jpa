@@ -1,4 +1,4 @@
-package defaut;
+package fr.diginamic.entites;
 
 import java.time.LocalDateTime;
 import java.util.Set;
