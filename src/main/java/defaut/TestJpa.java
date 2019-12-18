@@ -1,5 +1,7 @@
 package defaut;
 
+import java.util.Set;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -12,14 +14,18 @@ public class TestJpa {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("bibliotheque_TP2");
 		EntityManager em = entityManagerFactory.createEntityManager();
 
-		Livre livre = em.find(Livre.class, 1);
-		if (livre != null) {
-			System.out.println(livre);
+		TypedQuery<Emprunt> query = em.createQuery("select e from Emprunt e where e.id=1", Emprunt.class);
+		Emprunt emprunt = query.getResultList().get(0);
+		Set<Livre> livres = emprunt.getLivres();
+		for (Livre l : livres) {
+			System.out.println(l);
 		}
 
-		TypedQuery<Livre> query2 = em.createQuery("select l from Livre l where l.titre='Germinal'", Livre.class);
-		Livre livre2 = query2.getResultList().get(0);
-		System.out.println(livre2);
+		TypedQuery<Emprunt> query2 = em.createQuery("select e from Emprunt e where e.client.nom='Brigand'",
+				Emprunt.class);
+		Emprunt emprunt1 = query2.getResultList().get(0);
+		System.out.println(emprunt1);
+
 		em.close();
 		entityManagerFactory.close();
 	}
