@@ -20,12 +20,12 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "operation")
+@Table(name = "OPERATION")
 public class Operation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
+	@Column(name = "ID_OPERATION")
 	private Integer id;
 	@Column(name = "DATE", nullable = false, unique = true)
 	private LocalDate date;
@@ -34,11 +34,10 @@ public class Operation {
 	@Column(name = "MOTIF", length = 30, nullable = false, unique = true)
 	private String motif;
 
-	
 	@ManyToOne
-	@JoinColumn(name = "ID_compte")
+	@JoinColumn(name = "ID_COMPTE")
 	private Compte compte;
-	
+
 	/**
 	 * 
 	 */
@@ -122,13 +121,29 @@ public class Operation {
 		this.motif = motif;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		return "Operation [id=" + id + ", date=" + date + ", montant=" + montant + ", motif=" + motif + ", compte="
 				+ compte + "]";
+	}
+
+	/** Getter
+	 * @return the compte
+	 */
+	public Compte getCompte() {
+		return compte;
+	}
+
+	/** Setter
+	 * @param compte the compte to set
+	 */
+	public void setCompte(Compte compte) {
+		this.compte = compte;
 	}
 
 }

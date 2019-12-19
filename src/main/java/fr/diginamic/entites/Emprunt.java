@@ -30,9 +30,7 @@ public class Emprunt {
 	@Column(name = "delai")
 	private int delai;
 
-	@ManyToOne
-	@JoinColumn(name = "ID_client")
-	private Client client;
+	
 
 	@ManyToMany
 	@JoinTable(name = "COMPO", joinColumns = @JoinColumn(name = "ID_EMP", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ID_LIV", referencedColumnName = "ID"))
@@ -50,11 +48,7 @@ public class Emprunt {
 	 * 
 	 * @see java.lang.Object#toString()
 	 */
-	@Override
-	public String toString() {
-		return "Emprunt [id=" + id + ", date_debut=" + dateDebut + ", date_fin=" + dateFin + ", delai=" + delai
-				+ ", client=" + client + ", livres=" + livres + "]";
-	}
+	
 
 	/**
 	 * Getter
@@ -137,9 +131,7 @@ public class Emprunt {
 	 * 
 	 * @return the client
 	 */
-	public Client getClient() {
-		return client;
-	}
+	
 
 	/**
 	 * Setter
@@ -147,9 +139,7 @@ public class Emprunt {
 	 * @param client
 	 *            the client to set
 	 */
-	public void setClient(Client client) {
-		this.client = client;
-	}
+	
 
 	/**
 	 * Getter

@@ -23,13 +23,13 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "compte")
+@Table(name = "COMPTE")
 
 public class Compte {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID_compte")
+	@Column(name = "ID_COMPTE")
 	private Integer id;
 
 	@Column(name = "NUMERO", length = 30, nullable = false, unique = true)
@@ -39,7 +39,11 @@ public class Compte {
 	private Double solde;
 
 	@ManyToMany
-	@JoinTable(name = "COMPO", joinColumns = @JoinColumn(name = "ID_COMPTE", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ID_client", referencedColumnName = "ID"))
+	@JoinTable(name = "COMPO", 
+	joinColumns = @JoinColumn(name = "ID_COMPO_COMPTE", 
+	referencedColumnName = "ID_COMPTE"), 
+	inverseJoinColumns = @JoinColumn(name = "ID_COMPO_CLIENT", 
+	referencedColumnName = "ID_CLIENT"))
 	private Set<Client> clients;
 
 	@OneToMany(mappedBy = "compte")

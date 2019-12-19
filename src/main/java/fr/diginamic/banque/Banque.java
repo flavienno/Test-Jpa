@@ -20,12 +20,12 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "banque")
+@Table(name = "BANQUE")
 public class Banque {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID_banque")
+	@Column(name = "ID_BANQUE")
 	private Integer id;
 
 	@Column(name = "NOM", length = 30, nullable = false, unique = true)
